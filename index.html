@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan Mark Lotarino | Graphic Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --bg2:      #111118;
+      --bg3:      #18181f;
+      --border:   rgba(255,255,255,.07);
+      --accent:   #7c5cfc;
+      --accent2:  #c45cfc;
+      --text:     #e8e8f0;
+      --muted:    #7a7a90;
+      --radius:   14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+    /* ── Noise overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .4;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 6%;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(10,10,15,.7);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+      letter-spacing: .01em;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: .5rem 1.2rem;
+      border-radius: 99px;
+      font-size: .8rem !important;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .85; color: #fff !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ── Sections shared ── */
+    section { padding: 6rem 6%; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* glow blobs */
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(124,92,252,.18) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(124,92,252,.12);
+      border: 1px solid rgba(124,92,252,.3);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 99px;
+      margin-bottom: 1.8rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(.7); }
+    }
+
+    .hero-greeting {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+      letter-spacing: .02em;
+    }
+
+    .hero-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin-bottom: .6rem;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.8rem;
+      border-radius: 99px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(124,92,252,.35);
+    }
+    .btn-primary:hover {
+      background: #6a4de8;
+      box-shadow: 0 0 40px rgba(124,92,252,.5);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 6%;
+    }
+
+    /* ── About ── */
+    #about {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 0;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--bg3);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .about-img-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: .3;
+    }
+
+    /* decorative floating card */
+    .float-card {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      font-size: .82rem;
+      backdrop-filter: blur(10px);
+    }
+    .float-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(124,92,252,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .float-card strong { display: block; color: var(--text); font-weight: 600; }
+    .float-card span { color: var(--muted); font-size: .75rem; }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      line-height: 1.8;
+      font-size: .95rem;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      transition: border-color .2s;
+    }
+    .stat-card:hover { border-color: var(--accent); }
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── Services ── */
+    #services { background: var(--bg2); }
+
+    .services-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+    }
+    .services-header p { color: var(--muted); font-size: .95rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,92,252,.06), transparent);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .service-card:hover { border-color: rgba(124,92,252,.4); transform: translateY(-3px); }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(124,92,252,.12);
+      border: 1px solid rgba(124,92,252,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+      color: var(--text);
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .service-tag {
+      font-size: .72rem;
+      padding: .3rem .75rem;
+      border-radius: 99px;
+      background: rgba(124,92,252,.1);
+      border: 1px solid rgba(124,92,252,.2);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Resume ── */
+    #resume {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .resume-col h2 { margin-bottom: 2.5rem; }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 6px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2.4rem;
+      margin-bottom: 2.2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(124,92,252,.5);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .3rem;
+    }
+    .timeline-meta .badge {
+      font-size: .68rem;
+      padding: .2rem .6rem;
+      border-radius: 99px;
+      background: rgba(124,92,252,.12);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .timeline-item h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .2rem;
+    }
+    .timeline-item .location {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+    .timeline-item p {
+      font-size: .855rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* skills / strengths */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .skill-pill {
+      font-size: .8rem;
+      padding: .4rem 1rem;
+      border-radius: 99px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .lang-row {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .875rem;
+      color: var(--muted);
+    }
+    .lang-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* ── Portfolio ── */
+    #portfolio { background: var(--bg); }
+
+    .portfolio-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+    }
+    .portfolio-header p { color: var(--muted); font-size: .95rem; }
+
+    .portfolio-grid {
+      columns: 3;
+      column-gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .portfolio-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .portfolio-item:hover img { transform: scale(1.04); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,15,.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-overlay span {
+      font-size: .78rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: .02em;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: var(--radius);
+      object-fit: contain;
+      box-shadow: 0 0 60px rgba(0,0,0,.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: .7;
+      transition: opacity .2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 860px) { .portfolio-grid { columns: 2; } }
+    @media (max-width: 480px) { .portfolio-grid { columns: 1; } }
+    #contact { background: var(--bg2); text-align: center; }
+
+    .contact-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .contact-inner p {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Contact info cards */
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      transition: border-color .2s;
+    }
+    .contact-card:hover { border-color: rgba(124,92,252,.4); }
+
+    .contact-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(124,92,252,.12);
+      border: 1px solid rgba(124,92,252,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .contact-card-text {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+    }
+    .contact-card-text span {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-card-text strong {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.5rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--accent); }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      #about { grid-template-columns: 1fr; }
+      .about-image-wrap { max-width: 360px; margin: 0 auto; }
+      #resume { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 5%; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,15,.97); border-bottom: 1px solid var(--border); padding: 1.5rem 5%; gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 5%; }
+      .float-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <a class="nav-logo" href="#hero">Ryan<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Available for Work</div>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Ryan Mark Lotarino</h1>
+      <p class="hero-title">Graphic Designer &amp; Web Designer</p>
+      <p class="hero-desc">
+        Crafting visually compelling experiences through creativity, precision, and a deep passion for design.
+        I turn ideas into stunning visuals that communicate, inspire, and leave a lasting impression.
+      </p>
+      <div class="hero-actions">
+        <a href="#resume" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          View Resume
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── About ── -->
+  <section id="about" style="padding-left:0;padding-right:6%;column-gap:0;">
+    <div class="about-image-wrap reveal">
+      <img src="image/profileee.png" alt="Ryan Mark Lotarino" style="width:100%;display:block;object-fit:cover;" />
+    </div>
+
+    <div class="about-text reveal">
+      <span class="section-tag">About Me</span>
+      <h2>Graphic Designer</h2>
+      <p>
+        I'm Ryan Mark Lotarino, a passionate Graphic Designer based in Digos City, Philippines.
+        With a sharp eye for detail and a love for clean, purposeful design, I craft visuals
+        that don't just look good — they communicate.
+      </p>
+      <p>
+        My expertise spans graphic design, branding, layout composition, and website design.
+        I believe every pixel has a purpose, and I bring that philosophy to every project I take on.
+      </p>
+      <p>
+        I thrive in collaborative environments, working closely with teams and clients to translate
+        ideas into compelling visual stories — whether it's a brand identity, a print layout, or a
+        full website design.
+      </p>
+
+      <div class="stats-row">
+        <div class="stat-card reveal">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years Graphic Design</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Passion</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Services ── -->
+  <section id="services">
+    <div class="services-header reveal">
+      <span class="section-tag">What I Do</span>
+      <h2>My Services</h2>
+      <p>From pixels to print, I deliver design solutions that make an impact.</p>
+    </div>
+
+    <div class="services-grid">
+      <a href="#portfolio" class="service-card reveal" style="text-decoration:none;display:block;">
+        <div class="service-icon">
+          <!-- palette icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
+        <h3>Graphic Design</h3>
+        <p>From brand identities to print materials, I create visually stunning designs that capture your brand's essence and communicate your message with impact.</p>
+        <div class="service-tags">
+          <span class="service-tag">Brand Identity</span>
+          <span class="service-tag">Logo Design</span>
+          <span class="service-tag">Print & Digital</span>
+          <span class="service-tag">Layout & Typography</span>
+          <span class="service-tag">Social Media</span>
+        </div>
+        <div style="margin-top:1.2rem;font-size:.8rem;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:.3rem;">
+          View Portfolio
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Portfolio ── -->
+  <section id="portfolio">
+    <div class="portfolio-header reveal">
+      <span class="section-tag">My Work</span>
+      <h2>Portfolio</h2>
+      <p>A collection of graphic design projects — from branding and print to social media and beyond.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal" onclick="openLightbox('image/1.5m x 1m Diane 3pm.jpg', '1.5m x 1m Diane')">
+        <img src="image/1.5m x 1m Diane 3pm.jpg" alt="1.5m x 1m Diane" loading="lazy" />
+        <div class="portfolio-overlay"><span>1.5m x 1m Diane</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/2 FINAL HOLY WEEK.png', 'Holy Week')">
+        <img src="image/2 FINAL HOLY WEEK.png" alt="Holy Week" loading="lazy" />
+        <div class="portfolio-overlay"><span>Holy Week</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/2.5ft x 6ft CJC TVET.jpg', 'CJC TVET')">
+        <img src="image/2.5ft x 6ft CJC TVET.jpg" alt="CJC TVET" loading="lazy" />
+        <div class="portfolio-overlay"><span>CJC TVET</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/2x3 Bugasan ni Cholz.jpg', 'Bugasan ni Cholz')">
+        <img src="image/2x3 Bugasan ni Cholz.jpg" alt="Bugasan ni Cholz" loading="lazy" />
+        <div class="portfolio-overlay"><span>Bugasan ni Cholz</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/2x3 Fayes_unli rice copy.jpg', 'Faye\'s Unli Rice')">
+        <img src="image/2x3 Fayes_unli rice copy.jpg" alt="Faye's Unli Rice" loading="lazy" />
+        <div class="portfolio-overlay"><span>Faye's Unli Rice</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/3 EVILS.jpg', '3 Evils')">
+        <img src="image/3 EVILS.jpg" alt="3 Evils" loading="lazy" />
+        <div class="portfolio-overlay"><span>3 Evils</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/3x6 Montesorri 2pcs.jpg', 'Montessori')">
+        <img src="image/3x6 Montesorri 2pcs.jpg" alt="Montessori" loading="lazy" />
+        <div class="portfolio-overlay"><span>Montessori</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/4x6 Patricia.jpg', 'Patricia')">
+        <img src="image/4x6 Patricia.jpg" alt="Patricia" loading="lazy" />
+        <div class="portfolio-overlay"><span>Patricia</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/A4 Prutasan.jpg', 'A4 Prutasan')">
+        <img src="image/A4 Prutasan.jpg" alt="A4 Prutasan" loading="lazy" />
+        <div class="portfolio-overlay"><span>A4 Prutasan</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/APO (1) copy.jpg', 'APO')">
+        <img src="image/APO (1) copy.jpg" alt="APO" loading="lazy" />
+        <div class="portfolio-overlay"><span>APO</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Brokeboyz.jpg', 'Brokeboyz')">
+        <img src="image/Brokeboyz.jpg" alt="Brokeboyz" loading="lazy" />
+        <div class="portfolio-overlay"><span>Brokeboyz</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/DICT.png', 'DICT')">
+        <img src="image/DICT.png" alt="DICT" loading="lazy" />
+        <div class="portfolio-overlay"><span>DICT</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Gold.jpg', 'Gold')">
+        <img src="image/Gold.jpg" alt="Gold" loading="lazy" />
+        <div class="portfolio-overlay"><span>Gold</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/ILLUSIONS.jpg', 'Illusions')">
+        <img src="image/ILLUSIONS.jpg" alt="Illusions" loading="lazy" />
+        <div class="portfolio-overlay"><span>Illusions</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/IN GOLD WE TRUST.jpg', 'In Gold We Trust')">
+        <img src="image/IN GOLD WE TRUST.jpg" alt="In Gold We Trust" loading="lazy" />
+        <div class="portfolio-overlay"><span>In Gold We Trust</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/MOCK UP LANYARD.jpg', 'Lanyard Mockup')">
+        <img src="image/MOCK UP LANYARD.jpg" alt="Lanyard Mockup" loading="lazy" />
+        <div class="portfolio-overlay"><span>Lanyard Mockup</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/MT APO.jpg', 'Mt. Apo')">
+        <img src="image/MT APO.jpg" alt="Mt. Apo" loading="lazy" />
+        <div class="portfolio-overlay"><span>Mt. Apo</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Nightmare we fear.jpg', 'Nightmare We Fear')">
+        <img src="image/Nightmare we fear.jpg" alt="Nightmare We Fear" loading="lazy" />
+        <div class="portfolio-overlay"><span>Nightmare We Fear</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/PAGE 1.png', 'Page 1')">
+        <img src="image/PAGE 1.png" alt="Page 1" loading="lazy" />
+        <div class="portfolio-overlay"><span>Page 1</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/PALMARIUS FOR POSTING.jpg', 'Palmarius')">
+        <img src="image/PALMARIUS FOR POSTING.jpg" alt="Palmarius" loading="lazy" />
+        <div class="portfolio-overlay"><span>Palmarius</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Polo DESIGN (4).jpg', 'Polo Design')">
+        <img src="image/Polo DESIGN (4).jpg" alt="Polo Design" loading="lazy" />
+        <div class="portfolio-overlay"><span>Polo Design</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Prutasan (1) copy.jpg', 'Prutasan')">
+        <img src="image/Prutasan (1) copy.jpg" alt="Prutasan" loading="lazy" />
+        <div class="portfolio-overlay"><span>Prutasan</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/PURPLE GLASS.jpg', 'Purple Glass')">
+        <img src="image/PURPLE GLASS.jpg" alt="Purple Glass" loading="lazy" />
+        <div class="portfolio-overlay"><span>Purple Glass</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/resize 6ft x 114in Blackout BILLBOARD QUALITYv2.jpg', 'Billboard')">
+        <img src="image/resize 6ft x 114in Blackout BILLBOARD QUALITYv2.jpg" alt="Billboard" loading="lazy" />
+        <div class="portfolio-overlay"><span>Billboard</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Sintra 1 2x3.jpg', 'Sintra')">
+        <img src="image/Sintra 1 2x3.jpg" alt="Sintra" loading="lazy" />
+        <div class="portfolio-overlay"><span>Sintra</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/TAYLOR, SELENA, BILLIE.jpg', 'Taylor, Selena, Billie')">
+        <img src="image/TAYLOR, SELENA, BILLIE.jpg" alt="Taylor, Selena, Billie" loading="lazy" />
+        <div class="portfolio-overlay"><span>Taylor, Selena, Billie</span></div>
+      </div>
+      <div class="portfolio-item reveal" onclick="openLightbox('image/Tennis.jpg', 'Tennis')">
+        <img src="image/Tennis.jpg" alt="Tennis" loading="lazy" />
+        <div class="portfolio-overlay"><span>Tennis</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Lightbox ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── Resume ── -->
+  <section id="resume">
+    <!-- Left: Experience + Education -->
+    <div class="resume-col">
+      <span class="section-tag">Career</span>
+      <h2>Experience</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Graphic Designer</span></div>
+          <h4>Phoenix Marketing and Advertising</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Makati City</div>
+          <p>Created branding materials, marketing graphics, and promotional designs for various clients.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Graphic Designer</span></div>
+          <h4>Printworld Multimedia and Advertising</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Roxas Ext., Digos City</div>
+          <p>Handled full-cycle graphic design projects, supervised production tasks, and managed visual materials.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Social Media Manager</span></div>
+          <h4>Printworld Multimedia and Advertising</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Roxas Ext., Digos City</div>
+          <p>Managed the printing shop's online presence, created engaging content, promoted services, and responded to customer inquiries.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Frontend Developer</span></div>
+          <h4>RentMate — Capstone Project</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> University of Mindanao – Digos College</div>
+          <p>Developed the frontend interface for RentMate, a rental management web application, as part of the BS Information Technology capstone project.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right: Education, Strengths, Languages -->
+    <div class="resume-col">
+      <span class="section-tag">Background</span>
+      <h2>Education</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Secondary</span></div>
+          <h4>Davao del Sur School of Fisheries</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Bagumbayan, Malalag, Davao del Sur</div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-meta"><span class="badge">Tertiary</span></div>
+          <h4>University of Mindanao – Digos College</h4>
+          <div class="location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Roxas Ext., Digos City</div>
+          <p>BS Information Technology</p>
+        </div>
+
+      </div>
+
+      <!-- Strengths -->
+      <div style="margin-top: 2.5rem;">
+        <span class="section-tag">Strengths</span>
+        <div class="skills-wrap">
+          <span class="skill-pill">Teamwork</span>
+          <span class="skill-pill">Time Management</span>
+          <span class="skill-pill">Problem-Solving</span>
+          <span class="skill-pill">Creativity</span>
+          <span class="skill-pill">Adaptability</span>
+          <span class="skill-pill">Attention to Detail</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div style="margin-top: 2rem;">
+        <span class="section-tag">Languages</span>
+        <div class="lang-row">
+          <div class="lang-item"><div class="lang-dot"></div> English</div>
+          <div class="lang-item"><div class="lang-dot"></div> Filipino</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="section-tag reveal">Let's Work Together</span>
+      <h2 class="reveal">Have a project<br/>in mind?</h2>
+      <p class="reveal">
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+        Feel free to reach out — let's create something great together.
+      </p>
+
+      <!-- Contact Info Cards -->
+      <div class="contact-cards reveal">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-card-text">
+            <span>Phone</span>
+            <strong>09956139821</strong>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-card-text">
+            <span>Location</span>
+            <strong>Zone 1, Digos City, Davao del Sur, Philippines</strong>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          </div>
+          <div class="contact-card-text">
+            <span>Email</span>
+            <strong>lotarinoryan@gmail.com</strong>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <span>© 2026 Ryan Mark Lotarino. All rights reserved.</span>
+    <span>Built with passion in Digos City, Philippines
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-left:4px;color:var(--accent)"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    </span>
+  </footer>
+
+  <!-- ── Scripts ── -->
+  <script>
+    // Lightbox
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (!e || e.target !== document.getElementById('lightbox-img')) {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Mobile nav
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Close nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Staggered delay based on index among siblings
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const idx = siblings.indexOf(entry.target);
+          entry.target.style.transitionDelay = `${idx * 80}ms`;
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.style.color = 'var(--text)';
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+</body>
+</html>
